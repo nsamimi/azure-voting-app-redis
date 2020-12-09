@@ -9,6 +9,7 @@ pipeline {
         }
         stage ('Docker Build') {
             steps {
+                shell(script: 'whoami')
                 sh 'docker images -a'
                 sh '''
                     cd azure-vote/
