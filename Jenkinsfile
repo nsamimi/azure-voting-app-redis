@@ -2,12 +2,12 @@ pipeline {
    agent any
 
    stages {
-      stage('Verify Branch' {
+      stage('Verify Branch') {
          steps {
             echo "$GIT_BRANCH"
          }
       }
-      stage('Docker Build' {
+      stage('Docker Build') {
          steps {
             shell 'docker images -a'
             shell """
@@ -19,7 +19,7 @@ pipeline {
             """
          }
       }
-      stage('Start test app' {
+      stage('Start test app') {
          steps {
             shell """
                docker-compose up -d
@@ -35,14 +35,14 @@ pipeline {
             }
          }
       }
-      stage('Run Tests' {
+      stage('Run Tests') {
          steps {
             shell """
                pytest ./tests/test_sample.py
             """
          }
       }
-      stage('Stop test app' {
+      stage('Stop test app') {
          steps {
             shell """
                docker-compose down
