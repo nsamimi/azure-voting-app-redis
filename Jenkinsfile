@@ -9,7 +9,7 @@ pipeline {
         }
         stage ('Docker Build') {
             steps {
-                shell(script: 'docker image -a')
+                shell(script: 'docker images -a')
                 shell(script: """
                     cd azure-vote/
                     docker build -t jenkins-pipline .
